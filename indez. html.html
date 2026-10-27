@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maison Café | Cafetería & Pastelería</title>
+
+    <meta name="description"
+          content="Descubre Maison Café, un espacio exclusivo de café,
+          panadería artesanal y pastelería fina.">
+
+    <style>
+        /* =========================================
+           1. VARIABLES Y ESTILOS GENERALES
+        ========================================= */
+        :root {
+            --cafe: #4B3028;
+            --cafe-claro: #795548;
+            --crema: #FAF5ED;
+            --beige: #E9DCCB;
+            --arena: #D3B99A;
+            --terracota: #B96F50;
+            --blanco: #FFFFFF;
+            --texto: #51423B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--crema);
+            color: var(--texto);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .contenedor {
+            width: min(1120px, 90%);
+            margin: 0 auto;
+        }
+
+        .etiqueta {
+            color: var(--terracota);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .titulo-seccion {
+            color: var(--cafe);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin: 12px 0 18px;
+        }
+
+        .texto-centro {
+            text-align: center;
+        }
+
+        /* =========================================
+           2. NAVEGACIÓN
+        ========================================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 245, 237, 0.96);
+            border-bottom: 1px solid var(--beige);
+            backdrop-filter: blur(10px);
+        }
+
+        .navegacion {
+            min-height: 76px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            color: var(--cafe);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.65rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            display: block;
+            margin-top: -8px;
+            color: var(--terracota);
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu a {
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: var(--terracota);
+        }
+
+        .menu .enlace-contacto {
+            padding: 10px 20px;
+            color: var(--blanco);
+            background: var(--cafe);
+            border-radius: 3px;
+        }
+
+        .menu .enlace-contacto:hover {
+            color: var(--blanco);
+            background: var(--terracota);
+        }
+
+        /* =========================================
+           3. INICIO / HERO
+        ========================================= */
+        .hero {
+            min-height: 590px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+            padding: 70px 0;
+        }
+
+        .hero-contenido h1 {
+            max-width: 550px;
+            margin: 18px 0;
+            color: var(--cafe);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.8rem, 5vw, 4.6rem);
+            font-weight: 400;
+            line-height: 1.08;
+        }
+
+        .hero-contenido h1 em {
+            color: var(--terracota);
+        }
+
+        .hero-contenido p {
+            max-width: 460px;
+            margin-bottom: 28px;
+            color: #75665C;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 13px 25px;
+            border: 1px solid var(--cafe);
+            border-radius: 3px;
+            background: var(--cafe);
+            color: var(--blanco);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .boton:hover {
+            background: var(--terracota);
+            border-color: var(--terracota);
+            box-shadow: 0 8px 20px rgba(75, 48, 40, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .hero-imagen {
+            position: relative;
+        }
+
+        .hero-imagen img {
+            height: 460px;
+            border-radius: 48% 48% 4px 4px;
+            box-shadow: 18px 18px 0 var(--beige);
+        }
+
+        /* =========================================
+           4. MISIÓN, VISIÓN Y VALORES
+        ========================================= */
+        .identidad {
+            padding: 85px 0;
+            background: var(--blanco);
+        }
+
+        .identidad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .identidad-card {
+            padding: 30px;
+            background: var(--crema);
+            border: 1px solid var(--beige);
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .identidad-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .identidad-card .numero {
+            color: var(--terracota);
+            font-family: Georgia, serif;
+            font-size: 2rem;
+        }
+
+        .identidad-card h3 {
+            margin: 12px 0;
+            color: var(--cafe);
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+        }
+
+        .identidad-card p {
+            font-size: 0.93rem;
+        }
+
+        /* =========================================
+           5. PRODUCTOS
+        ========================================= */
+        .productos {
+            padding: 90px 0;
+        }
+
+        .productos-intro {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .producto-card {
+            overflow: hidden;
+            background: var(--blanco);
+            border: 1px solid var(--beige);
+            border-radius: 5px;
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(75, 48, 40, 0.13);
+        }
+
+        .producto-imagen {
+            height: 250px;
+            overflow: hidden;
+            background: var(--beige);
+        }
+
+        .producto-imagen img {
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .producto-card:hover .producto-imagen img {
+            transform: scale(1.07);
+        }
+
+        .producto-info {
+            padding: 23px;
+        }
+
+        .producto-info h3 {
+            color: var(--cafe);
+            font-family: Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+        }
+
+        .producto-info p {
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        .producto-categoria {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--terracota);
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           6. BANNER DECORATIVO
+        ========================================= */
+        .banner {
+            padding: 70px 20px;
+            background: var(--cafe);
+            color: var(--crema);
+            text-align: center;
+        }
+
+        .banner h2 {
+            margin-bottom: 12px;
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+        }
+
+        .banner p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--beige);
+        }
+
+        /* =========================================
+           7. CONTACTO Y FORMULARIO
+        ========================================= */
+        .contacto {
+            padding: 90px 0;
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 65px;
+            align-items: start;
+            margin-top: 35px;
+        }
+
+        .contacto-info h3 {
+            margin-bottom: 15px;
+            color: var(--cafe);
+            font-family: Georgia, serif;
+            font-size: 1.7rem;
+            font-weight: 400;
+        }
+
+        .contacto-info p {
+            margin-bottom: 18px;
+        }
+
+        .dato-contacto {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--beige);
+            font-size: 0.93rem;
+        }
+
+        .formulario {
+            padding: 32px;
+            background: var(--blanco);
+            border: 1px solid var(--beige);
+            border-radius: 5px;
+        }
+
+        .campo {
+            margin-bottom: 20px;
+        }
+
+        .campo label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--cafe);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .campo input,
+        .campo textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #D9CBBE;
+            border-radius: 3px;
+            background: var(--crema);
+            color: var(--texto);
+            font: inherit;
+            font-size: 0.92rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .campo input:focus,
+        .campo textarea:focus {
+            outline: none;
+            border-color: var(--terracota);
+        }
+
+        .campo textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .formulario .boton {
+            width: 100%;
+        }
+
+        /* =========================================
+           8. PIE DE PÁGINA
+        ========================================= */
+        footer {
+            padding: 25px 0;
+            background: #38241E;
+            color: var(--beige);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer span {
+            color: #E0A48B;
+        }
+
+        /* =========================================
+           9. ANIMACIÓN DE ENTRADA
+        ========================================= */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-contenido {
+            animation: aparecer 0.8s ease both;
+        }
+
+        .hero-imagen {
+            animation: aparecer 1s ease both;
+        }
+
+        /* =========================================
+           10. DISEÑO RESPONSIVE
+        ========================================= */
+        @media (max-width: 800px) {
+            .navegacion {
+                padding: 14px 0;
+                flex-direction: column;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 22px;
+            }
+
+            .hero {
+                min-height: auto;
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 55px 0;
+            }
+
+            .hero-imagen {
+                max-width: 520px;
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .hero-imagen img {
+                height: 380px;
+            }
+
+            .identidad-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .productos-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contacto-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .logo {
+                font-size: 1.45rem;
+            }
+
+            .menu {
+                gap: 10px 16px;
+            }
+
+            .menu a {
+                font-size: 0.82rem;
+            }
+
+            .menu .enlace-contacto {
+                padding: 7px 12px;
+            }
+
+            .hero-contenido h1 {
+                font-size: 2.7rem;
+            }
+
+            .hero-imagen img {
+                height: 300px;
+            }
+
+            .identidad,
+            .productos,
+            .contacto {
+                padding: 60px 0;
+            }
+
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .producto-imagen {
+                height: 240px;
+            }
+
+            .formulario {
+                padding: 22px;
+            }
+        }
+
+        /* Accesibilidad: reduce movimiento si el usuario lo prefiere */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <header>
+        <nav class="navegacion contenedor" aria-label="Navegación principal">
+
+            <a href="#inicio" class="logo">
+                Maison Café
+                <span>CAFÉ & PASTELERÍA</span>
+            </a>
+
+            <ul class="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li>
+                    <a href="#contacto" class="enlace-contacto">
+                        Contáctenos
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- SECCIÓN 1: INICIO -->
+        <section class="hero contenedor" id="inicio">
+
+            <div class="hero-contenido">
+                <span class="etiqueta">Un placer para tus sentidos</span>
+
+                <h1>
+                    Pequeños momentos,
+                    <em>grandes sabores.</em>
+                </h1>
+
+                <p>
+                    Descubre un lugar donde el aroma del café recién preparado
+                    se encuentra con la delicadeza de la pastelería artesanal.
+                    Cada detalle está pensado para disfrutar sin prisa.
+                </p>
+
+                <a href="#productos" class="boton">
+                    Descubrir productos
+                </a>
+            </div>
+
+            <div class="hero-imagen">
+                <img
+                    src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=85"
+                    alt="Ambiente acogedor de una cafetería"
+                    fetchpriority="high"
+                >
+            </div>
+
+        </section>
+
+        <!-- MISIÓN, VISIÓN Y CARACTERÍSTICAS -->
+        <section class="identidad" id="nosotros">
+
+            <div class="contenedor">
+
+                <div class="texto-centro">
+                    <span class="etiqueta">Nuestra esencia</span>
+                    <h2 class="titulo-seccion">
+                        Más que una cafetería
+                    </h2>
+                    <p>
+                        Creamos experiencias que se recuerdan por su sabor,
+                        calidez y atención a cada detalle.
+                    </p>
+                </div>
+
+                <div class="identidad-grid">
+
+                    <article class="identidad-card">
+                        <span class="numero">01</span>
+                        <h3>Misión</h3>
+                        <p>
+                            Ofrecer café de calidad y productos de panadería
+                            y pastelería elaborados con dedicación, brindando
+                            una experiencia cálida y especial en cada visita.
+                        </p>
+                    </article>
+
+                    <article class="identidad-card">
+                        <span class="numero">02</span>
+                        <h3>Visión</h3>
+                        <p>
+                            Ser una cafetería reconocida por su calidad,
+                            creatividad y servicio cercano, convirtiéndonos
+                            en un lugar favorito para compartir momentos
+                            inolvidables.
+                        </p>
+                    </article>
+
+                    <article class="identidad-card">
+                        <span class="numero">03</span>
+                        <h3>Nuestra esencia</h3>
+                        <p>
+                            Ingredientes seleccionados, presentación cuidada,
+                            ambiente acogedor y atención personalizada.
+                            La sencillez y la calidad son protagonistas.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN 2: CATÁLOGO DE PRODUCTOS -->
+        <section class="productos" id="productos">
+
+            <div class="contenedor">
+
+                <div class="productos-intro texto-centro">
+                    <span class="etiqueta">Hecho para disfrutar</span>
+                    <h2 class="titulo-seccion">
+                        Nuestra selección
+                    </h2>
+                    <p>
+                        Sabores delicados, texturas irresistibles y el
+                        acompañamiento perfecto para tus momentos especiales.
+                    </p>
+                </div>
+
+                <div class="productos-grid">
+
+                    <!-- Producto 1 -->
+                    <article class="producto-card">
+
+                        <div class="producto-imagen">
+                            <img
+                                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
+                                alt="Taza de café recién preparado"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="producto-info">
+                            <h3>Café de especialidad</h3>
+                            <p>
+                                Una taza aromática, con notas delicadas
+                                y un sabor perfecto para comenzar el día.
+                            </p>
+                            <span class="producto-categoria">
+                                Cafetería
+                            </span>
+                        </div>
+
+                    </article>
+
+                    <!-- Producto 2 -->
+                    <article class="producto-card">
+
+                        <div class="producto-imagen">
+                            <img
+                                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"
+                                alt="Pastel de chocolate decorado"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="producto-info">
+                            <h3>Pasteles artesanales</h3>
+                            <p>
+                                Preparaciones dulces con acabados delicados,
+                                ideales para celebrar y compartir.
+                            </p>
+                            <span class="producto-categoria">
+                                Pastelería
+                            </span>
+                        </div>
+
+                    </article>
+
+                    <!-- Producto 3 -->
+                    <article class="producto-card">
+
+                        <div class="producto-imagen">
+                            <img
+                                src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85"
+                                alt="Croissants de panadería artesanal"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="producto-info">
+                            <h3>Panadería artesanal</h3>
+                            <p>
+                                Hojaldres y piezas de panadería con texturas
+                                delicadas para acompañar tu bebida favorita.
+                            </p>
+                            <span class="producto-categoria">
+                                Panadería
+                            </span>
+                        </div>
+
+                    </article>
+
+                    <!-- Producto 4 -->
+                    <article class="producto-card">
+
+                        <div class="producto-imagen">
+                            <img
+                                src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=800&q=85"
+                                alt="Tostadas con fruta para el desayuno"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="producto-info">
+                            <h3>Desayunos especiales</h3>
+                            <p>
+                                Combinaciones deliciosas para disfrutar
+                                de una mañana tranquila y diferente.
+                            </p>
+                            <span class="producto-categoria">
+                                Desayunos
+                            </span>
+                        </div>
+
+                    </article>
+
+                    <!-- Producto 5 -->
+                    <article class="producto-card">
+
+                        <div class="producto-imagen">
+                            <img
+                                src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=85"
+                                alt="Postre dulce servido en un recipiente"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="producto-info">
+                            <h3>Postres delicados</h3>
+                            <p>
+                                Dulces bocados con presentaciones cuidadas
+                                para regalarte un momento especial.
+                            </p>
+                            <span class="producto-categoria">
+                                Repostería
+                            </span>
+                        </div>
+
+                    </article>
+
+                    <!-- Producto 6 -->
+                    <article class="producto-card">
+
+                        <div class="producto-imagen">
+                            <img
+                                src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=85"
+                                alt="Bebida de café servida en un vaso"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="producto-info">
+                            <h3>Bebidas especiales</h3>
+                            <p>
+                                Bebidas preparadas para acompañar tus
+                                conversaciones, pausas y encuentros.
+                            </p>
+                            <span class="producto-categoria">
+                                Bebidas
+                            </span>
+                        </div>
+
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- BANNER DE MARCA -->
+        <section class="banner">
+            <h2>El tiempo sabe mejor aquí.</h2>
+            <p>
+                Regálate una pausa, disfruta de un buen café y descubre
+                el placer de los pequeños detalles.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 3: CONTÁCTENOS -->
+        <section class="contacto" id="contacto">
+
+            <div class="contenedor">
+
+                <div class="texto-centro">
+                    <span class="etiqueta">Estamos para escucharte</span>
+                    <h2 class="titulo-seccion">
+                        Hablemos
+                    </h2>
+                    <p>
+                        ¿Tienes una consulta, una sugerencia o quieres
+                        conocer más sobre nuestros productos?
+                    </p>
+                </div>
+
+                <div class="contacto-grid">
+
+                    <!-- Información de contacto -->
+                    <div class="contacto-info">
+                        <h3>Nos encantará conocerte.</h3>
+
+                        <p>
+                            Escríbenos y estaremos encantados de ayudarte.
+                            Queremos que tu experiencia sea tan especial
+                            como cada uno de nuestros productos.
+                        </p>
+
+                        <!-- Reemplaza estos datos por los reales -->
+                        <div class="dato-contacto">
+                            <strong>Correo:</strong>
+                            contacto@maisoncafe.com
+                        </div>
+
+                        <div class="dato-contacto">
+                            <strong>Ubicación:</strong>
+                            Tu ciudad, Colombia
+                        </div>
+
+                        <div class="dato-contacto">
+                            <strong>Horario:</strong>
+                            Lunes a sábado
+                        </div>
+                    </div>
+
+                    <!-- Formulario de contacto -->
+                    <form class="formulario"
+                          action="#contacto"
+                          method="get">
+
+                        <div class="campo">
+                            <label for="nombre">Nombre completo</label>
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                placeholder="Escribe tu nombre"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="correo">Correo electrónico</label>
+                            <input
+                                type="email"
+                                id="correo"
+                                name="correo"
+                                placeholder="nombre@correo.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="mensaje">Tu mensaje</label>
+                            <textarea
+                                id="mensaje"
+                                name="mensaje"
+                                placeholder="Cuéntanos cómo podemos ayudarte..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="boton">
+                            Enviar mensaje
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="contenedor">
+            <p>
+                © 2026 Maison Café.
+                <span>El arte de disfrutar lo sencillo.</span>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
